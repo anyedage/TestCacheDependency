@@ -1,0 +1,6 @@
+D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDependency.exe.config
+D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\obj\x86\Debug\TestCacheDependency.csprojResolveAssemblyReference.cache
+D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDependency.exe
+D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDependency.pdb
+D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\obj\x86\Debug\TestCacheDependency.exe
+D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\obj\x86\Debug\TestCacheDependency.pdb
