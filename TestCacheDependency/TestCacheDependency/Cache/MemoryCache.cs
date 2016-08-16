@@ -4,10 +4,12 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text.RegularExpressions;
 
-namespace TestCacheDependency
+namespace TestCacheDependency.Cache
 {
-    public class MemoryCache
+    public class MemoryCache:ICache
     {
+        private static readonly int CacheMinutesDefault = 5;
+
         protected ObjectCache Cache
         {
             get { return System.Runtime.Caching.MemoryCache.Default; }
@@ -16,6 +18,11 @@ namespace TestCacheDependency
         public T Get<T>(string key)
         {
             return (T) this.Cache[key];
+        }
+
+        public void Set(string key, object data)
+        {
+            Set(key, data, CacheMinutesDefault);
         }
 
         public void Set(string key, object data, int cacheMinutes)

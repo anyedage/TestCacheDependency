@@ -2,44 +2,73 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TestCacheDependency.Cache;
+using TestCacheDependency.Dtos;
 
 namespace TestCacheDependency.Entities
 {
     /// <summary>
     /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class CacheSetEntity<T>
+    public class CacheSetEntity
     {
-        public CacheSetEntity(string keyField)
+        public CacheSetEntity(SetName setName, CacheSetting cacheSetting, Func<object> initListFunc)
         {
-            KeyField = keyField;
-        }
-        public string CacheSetName
-        {
-            get { return "c_" + typeof (T).Name; }
-        }
-        public string KeyField { get; private set; }
+            _initListFunc = initListFunc;
+            _cache = CacheFactory.Instance();
 
+            SetName = setName;
+            CacheSetting = cacheSetting;
+        }
+
+        private readonly Func<object> _initListFunc;
+        private bool _isChanged = true;
+        private readonly ICache _cache;
+
+        public SetName SetName { get; private set; }
+        public CacheSetting CacheSetting { get; private set; }
         
-        public List<T> GetAll()
+        public object GetAll()
         {
-            throw new NotImplementedException();
+            object list;
+            if (_isChanged)
+            {
+                 list = _initListFunc();
+                SetAll(list);//list写入
+                _isChanged = false;
+            }
+
+            //取缓存
+            list = _cache.Get<object>(SetName.ToString());
+
+            return list;
         }
 
-        public T GetByKey()
+        public object GetByKey<T>(string key)
+            where T : IKey
         {
-            throw new NotImplementedException();
+            var list = GetAll() as List<T>;
+            return list.SingleOrDefault(x => x.Key() == key);
         }
 
-        public void SetAll(List<T> list)
+        private void SetAll(object list)
         {
-            throw new NotImplementedException();
+            _cache.Set(SetName.ToString(),list);
         }
 
-        public void Set(T item)
+        public void AddEvent(string key)
         {
-            throw new NotImplementedException();
+            _isChanged = true;
+        }
+
+        public void UpdateEvent(string key)
+        {
+            _isChanged = true;
+        }
+
+        public void DeleteEvent(string key)
+        {
+            _isChanged = true;
         }
     }
 }

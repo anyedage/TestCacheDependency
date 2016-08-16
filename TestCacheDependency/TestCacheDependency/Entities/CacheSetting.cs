@@ -5,12 +5,11 @@ using System.Text;
 
 namespace TestCacheDependency.Entities
 {
-   
     /// <summary>
-    /// 事件类型枚举
+    /// Cache setting
     /// </summary>
-    public enum EventAct
+    public enum CacheSetting
     {
-        C, R, U, D, BatchCUD
+        AppCache, AppDetailCache
     }
 }

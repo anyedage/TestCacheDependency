@@ -4,3 +4,8 @@ D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDe
 D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDependency.pdb
 D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\obj\x86\Debug\TestCacheDependency.exe
 D:\Danggl\TestCode\TestCacheDependency\TestCacheDependency\obj\x86\Debug\TestCacheDependency.pdb
+C:\Users\065\Documents\GitHub\TestCacheDependency\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDependency.exe.config
+C:\Users\065\Documents\GitHub\TestCacheDependency\TestCacheDependency\TestCacheDependency\obj\x86\Debug\TestCacheDependency.exe
+C:\Users\065\Documents\GitHub\TestCacheDependency\TestCacheDependency\TestCacheDependency\obj\x86\Debug\TestCacheDependency.pdb
+C:\Users\065\Documents\GitHub\TestCacheDependency\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDependency.exe
+C:\Users\065\Documents\GitHub\TestCacheDependency\TestCacheDependency\TestCacheDependency\bin\Debug\TestCacheDependency.pdb

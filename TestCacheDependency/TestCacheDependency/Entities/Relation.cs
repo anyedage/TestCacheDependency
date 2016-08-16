@@ -5,12 +5,9 @@ using System.Text;
 
 namespace TestCacheDependency.Entities
 {
-   
-    /// <summary>
-    /// 事件类型枚举
-    /// </summary>
-    public enum EventAct
+    public class Relation
     {
-        C, R, U, D, BatchCUD
+        public SetName SetName { get; set; }
+        public TableName RelationTable { get; set; }
     }
 }

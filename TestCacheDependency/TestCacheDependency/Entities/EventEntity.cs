@@ -8,18 +8,17 @@ namespace TestCacheDependency.Entities
     /// <summary>
     /// 事件实体
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class EventEntity<T>
+    public class EventEntity
     {
-        public EventActEnum EventAct { get; set; }
-        public T Entity { get; private set; }
-        public string EntityKey { get; private set; }
+        public EventAct EventAct { get; set; }
+        public TableName TableName { get; private set; }
+        public string Key { get; private set; }
 
-        public EventEntity(EventActEnum eventAct, T entity, Func<T, string> getKey)
+        public EventEntity(EventAct eventAct, TableName tableName, string key)
         {
             EventAct = eventAct;
-            Entity = entity;
-            EntityKey = getKey(entity);
+            TableName = tableName;
+            Key = key;
         }
     }
 }

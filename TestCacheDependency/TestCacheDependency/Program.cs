@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TestCacheDependency.Repositories;
 
 namespace TestCacheDependency
 {
@@ -9,7 +10,7 @@ namespace TestCacheDependency
     {
         static void Main(string[] args)
         {
-            AppCaches.DisplayDependRelations();
+            Caches.DisplayDependRelations();
 
             Console.ReadKey();
         }

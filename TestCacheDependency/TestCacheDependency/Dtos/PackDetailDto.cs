@@ -5,12 +5,17 @@ using System.Text;
 
 namespace TestCacheDependency.Dtos
 {
-    public class PackDetailDto
+    public class PackDetailDto : IKey
     {
         public Guid Id { get; set; }
         public Guid PackageId { get; set; }
         public Guid AppId { get; set; }
         public int HostType { get; set; }
         public string Url { get; set; }
+
+        public string Key()
+        {
+            return Id.ToString();
+        }
     }
 }
