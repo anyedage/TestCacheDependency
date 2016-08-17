@@ -8,6 +8,6 @@ namespace TestCacheDependency.Entities
     public class Relation
     {
         public SetName SetName { get; set; }
-        public TableName RelationTable { get; set; }
+        public TableName DependTable { get; set; }
     }
 }

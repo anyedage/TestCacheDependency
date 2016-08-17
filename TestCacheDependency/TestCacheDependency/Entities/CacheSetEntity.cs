@@ -8,20 +8,20 @@ using TestCacheDependency.Dtos;
 namespace TestCacheDependency.Entities
 {
     /// <summary>
-    /// 
+    /// 负责Cache实体的事件处理（包括初始化事件）
     /// </summary>
     public class CacheSetEntity
     {
-        public CacheSetEntity(SetName setName, CacheSetting cacheSetting, Func<object> initListFunc)
+        public CacheSetEntity(SetName setName, CacheSetting cacheSetting, Func<object> listFactory)
         {
-            _initListFunc = initListFunc;
+            _listFactory = listFactory;
             _cache = CacheFactory.Instance();
 
             SetName = setName;
             CacheSetting = cacheSetting;
         }
 
-        private readonly Func<object> _initListFunc;
+        private readonly Func<object> _listFactory;
         private bool _isChanged = true;
         private readonly ICache _cache;
 
@@ -33,7 +33,7 @@ namespace TestCacheDependency.Entities
             object list;
             if (_isChanged)
             {
-                 list = _initListFunc();
+                 list = _listFactory();
                 SetAll(list);//list写入
                 _isChanged = false;
             }
@@ -44,7 +44,7 @@ namespace TestCacheDependency.Entities
             return list;
         }
 
-        public object GetByKey<T>(string key)
+        public object GetSingle<T>(string key)
             where T : IKey
         {
             var list = GetAll() as List<T>;

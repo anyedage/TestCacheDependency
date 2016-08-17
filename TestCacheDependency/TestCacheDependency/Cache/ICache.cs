@@ -9,5 +9,6 @@ namespace TestCacheDependency.Cache
     {
         T Get<T>(string key);
         void Set(string key, object data);
+        void Remove(string key);
     }
 }

@@ -8,9 +8,9 @@ namespace TestCacheDependency.Repositories
 {
     /// <summary>
     /// 负责管理所有的cache，它清楚cache数据怎样初始化（调用DAL）
-    /// caches只对Repository可见
+    /// Caches只对Repository可见
     /// 
-    /// 新增cache，主要涉及两个方法：InitSet、InitRelation
+    /// 新增CacheSetEntity，主要涉及两个方法：InitSet、InitRelation
     /// </summary>
     public class Caches
     {
@@ -58,7 +58,7 @@ namespace TestCacheDependency.Repositories
             var strFormater = "当前:{0} ,父:{1} ";
 
             foreach (var relation in DependRelations)
-                Console.WriteLine(strFormater, relation.SetName, relation.RelationTable);
+                Console.WriteLine(strFormater, relation.SetName, relation.DependTable);
         }
 
         #endregion
@@ -68,7 +68,7 @@ namespace TestCacheDependency.Repositories
         private static List<CacheSetEntity> GetEffectedSets(EventEntity eventEntity)
         {
             var setNames = DependRelations
-                .Where(x => x.RelationTable == eventEntity.TableName)
+                .Where(x => x.DependTable == eventEntity.TableName)
                 .Select(x => x.SetName)
                 .Distinct();
             var sets = SetList
@@ -97,7 +97,7 @@ namespace TestCacheDependency.Repositories
                 new Relation
                 {
                     SetName = mainSetName,
-                    RelationTable = relationTable
+                    DependTable = relationTable
                 });
         }
 
